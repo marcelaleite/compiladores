@@ -6,4 +6,4 @@ class Token:
         self.posfim = posfim
 
     def __str__(self) -> str:
-        return '<'+self.token + ','+self.lexema+','+str(self.posini)+','+str(self.posfim)+'>'
+        return '<'+self.token + ','+self.lexema+'>'
