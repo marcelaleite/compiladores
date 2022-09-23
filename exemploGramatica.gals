@@ -1,0 +1,49 @@
+#Options
+GenerateScanner = true
+GenerateParser = true
+Language = Java
+ScannerName = Lexico
+ParserName = Sintatico
+SemanticName = Semantico
+ScannerCaseSensitive = true
+ScannerTable = Full
+Input = String
+Parser = SLR
+#RegularDefinitions
+letras:[a-z]
+num:[0-9]
+ws:[\ \n\t\r]
+#Tokens
+IF:"if"
+VIRGULA:","
+PV:";"
+DEC:"dec"
+ABRE_PAR:"("
+FECHA_PAR:")"
+ABRE_BLOCO:"{"
+FECHA_BLOCO:"}"
+ATRIBUICAO:"="
+COMPARA:"=="
+TIPO:("int"|"char")
+ID:{letras}({letras}|{num})*
+CONST:{num}+
+:{ws}
+#NonTerminals
+<P>
+<LISTA_PARAM>
+<PARAM>
+<LISTA_BLOCO>
+<BLOCO>
+<ATR>
+<VAR>
+<SEL_IF>
+#Grammar
+ <P>     ::= DEC ID ABRE_PAR <LISTA_PARAM> FECHA_PAR ABRE_BLOCO <LISTA_BLOCO> FECHA_BLOCO;
+<LISTA_PARAM>  ::= VIRGULA <LISTA_PARAM> | <PARAM><LISTA_PARAM> | î;
+<PARAM>        ::= TIPO ID;
+<LISTA_BLOCO>  ::= <BLOCO> <LISTA_BLOCO> | î;
+<BLOCO>        ::= <ATR> | <SEL_IF>;
+<ATR>          ::= ID ATRIBUICAO <VAR> PV;
+<VAR>          ::= ID | CONST;
+<SEL_IF>       ::= IF ABRE_PAR ID COMPARA ID FECHA_PAR ABRE_BLOCO <BLOCO> FECHA_BLOCO;
+	

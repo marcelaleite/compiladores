@@ -14,7 +14,5 @@ lex = Lexico(entrada+"$")
 
 
 s = SintaticoDescendentePreditivo(lex)
-# print(s.M['P']['DEC'])
-# x = s.M['P']['DEC'];
-# print(x)
+
 s.sintatico()

@@ -11,7 +11,7 @@ from pilha import Pilha
         Gramática:
         ---------------------------------------------------------------------------------------------------------
         <P>            ::= DEC ID ABRE_PAR <LISTA_PARAM> FECHA_PAR ABRE_BLOCO <LISTA_BLOCO> FECHA_BLOCO
-        <LISTA_PARAM>  ::= <PARAM> <LISTA_PARAM2> 
+        <LISTA_PARAM>  ::= <PARAM> <LISTA_PARAM2>
         <LISTA_PARAM2> ::= VIRGULA <LISTA_PARAM> | EPSILON
         <PARAM>        ::= TIPO ID
         <LISTA_BLOCO>  ::= <BLOCO> <LISTA_BLOCO> | EPSILON 
@@ -27,7 +27,7 @@ from pilha import Pilha
         First de cada terminal é ele mesmo
         First de cada não terminal é o primeiro token que aparece em cada uma de suas produções
         FIRST(P) = {DEC}
-        FIRST(LISTA_PARAM) = {TIPO}
+        FIRST(LISTA_PARAM) = {TIPO, EPSILON}
         FIRST(PARAM)  = {TIPO}
         FIRST(LISTA_PARAM2) = {VIRGULA, EPSILON}
         FIRST(LISTA_BLOCO) = FIRST(BLOCO) = FIRST(ATR) + FIRST(SEL_IF) {id,if,EPSILON}
